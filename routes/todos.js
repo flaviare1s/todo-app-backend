@@ -12,3 +12,49 @@ todosRouter.post('/todos', async (req, res) => {
     res.status(500).json({ message: err.message })
   }  
 })
+
+todosRouter.get('/todos', async (req, res) => {
+  const todos = await Todo.findAll()
+  res.json(todos)
+})
+
+todosRouter.get('/todos/:id', async (req, res) => {
+  const todo = await Todo.findByPk(req.params.id)
+  if (todo) {
+    res.json(todo)
+  } else {
+    res.status(404).json({ message: 'Todo not found' })
+  }
+})
+
+todosRouter.put('/todos/:id', async (req, res) => {
+  const { title, status } = req.body
+
+  try {
+    const todo = await Todo.findByPk(req.params.id)
+
+    if (todo) {
+      await todo.update({ title, status })
+      res.json({ message: 'Todo updated successfully' })
+    } else {
+      res.status(404).json({ message: 'Todo not found' })
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
+todosRouter.delete('/todos/:id', async (req, res) => {
+  try {
+    const todo = await Todo.findByPk(req.params.id)
+
+    if(todo) {
+      await todo.destroy()
+      res.json({ message: 'Todo deleted successfully' })
+    } else {
+      res.status(404).json({ message: 'Todo not found' })
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
