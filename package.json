@@ -21,6 +21,10 @@
     "todo-app-backend": "file:"
   },
   "devDependencies": {
+    "@types/node": "^22.1.0",
+    "javascript": "^1.0.0",
+    "jsup": "^0.0.1",
+    "jsx": "^0.9.89",
     "nodemon": "^3.1.4"
   }
 }
