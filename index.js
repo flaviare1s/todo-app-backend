@@ -1,6 +1,6 @@
 import { connection, authenticate } from "./config/database.js"
 import express from 'express'
-import todosRouter from "./routes/todos.js"
+import { todosRouter } from "./routes/todos.js"
 
 authenticate(connection).then(() => {
   connection.sync()
