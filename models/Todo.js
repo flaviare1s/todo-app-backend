@@ -1,5 +1,6 @@
 import { connection } from "../config/database"
 import { DataTypes } from "sequelize"
+console.log("Database connection imported.")
 
 export const Todo = connection.define('todo', {
   title: {
