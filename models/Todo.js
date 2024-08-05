@@ -8,6 +8,6 @@ export const Todo = connection.define('todo', {
   },
   status: {
     type: DataTypes.ENUM('active', 'completed'),
-    allowNull: false
+    defaultValue: 'active'
   }
 })

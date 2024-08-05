@@ -44,6 +44,21 @@ todosRouter.put('/todos/:id', async (req, res) => {
   }
 })
 
+todosRouter.delete('/todos/completed', async (req, res) => {
+  try {
+    const result =await Todo.destroy({
+      where: { status: 'completed' }
+    })
+    if (result > 0) {
+      res.json({ message: 'Todos deleted successfully' });
+    } else {
+      res.status(404).json({ message: 'No completed todos found' });
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
 todosRouter.delete('/todos/:id', async (req, res) => {
   try {
     const todo = await Todo.findByPk(req.params.id)

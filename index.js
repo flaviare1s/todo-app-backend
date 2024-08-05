@@ -1,5 +1,6 @@
 import { connection, authenticate } from "./config/database.js"
 import express from 'express'
+import cors from 'cors'
 import { todosRouter } from "./routes/todos.js"
 
 authenticate(connection).then(() => {
@@ -7,6 +8,8 @@ authenticate(connection).then(() => {
 })
 
 const app = express()
+
+app.use(cors())
 
 app.use(express.json())
 
