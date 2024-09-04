@@ -12,7 +12,7 @@ export const connection = new Sequelize(
     dialectOptions: {
       ssl: true,
     },
-  }
+  },
 );
 
 export async function authenticate(connection) {

@@ -10,7 +10,7 @@ authenticate(connection).then(() => {
 const app = express()
 
 app.use(cors({
-  origin: "https://flaviare1s.github.io/todo-app",
+  origin: process.env.FRONTEND_URL,
 }))
 
 app.use(express.json())
