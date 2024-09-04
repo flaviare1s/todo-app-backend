@@ -7,11 +7,13 @@ export const connection = new Sequelize(
   process.env.DB_USER,
   process.env.DB_PASSWORD,
   {
+    dialect: 'postgres',
     host: process.env.DB_HOST,
-    dialect: "mysql",
-    port: process.env.DB_PORT
+    dialectOptions: {
+      ssl: true,
+    },
   }
-)
+);
 
 export async function authenticate(connection) {
   try {
