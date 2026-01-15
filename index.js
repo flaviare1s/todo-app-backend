@@ -9,9 +9,13 @@ authenticate(connection).then(() => {
 
 const app = express()
 
-app.use(cors({
-  origin: "https://flaviare1s.github.io",
-}))
+app.use(
+  cors({
+    origin: ["https://flaviare1s.github.io", "http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use(express.json())
 

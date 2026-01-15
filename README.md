@@ -1,38 +1,89 @@
-# TODO APP - BACKEND
+# TODO APP – Backend
 
-Backend for the Todo App challenge from Frontend Mentor.
+Backend da aplicação **Todo App**, desenvolvido com Node.js, Express e Sequelize, utilizando **MySQL em Docker**.
 
-## Features
+Este projeto foi configurado para rodar **100% via Docker**, sem necessidade de instalar MySQL ou Node.js localmente.
 
-- Create and delete todos
+---
 
-## Technologies Used
+## 🚀 Tecnologias Utilizadas
 
+- Node.js
 - Express
 - Sequelize
-- Dotenv
+- MySQL
+- Docker
+- Docker Compose
 
-## Development Environment Setup
+---
 
-1. **Clone the Repository**
+## 📦 Pré-requisitos
 
-   Clone the repository from GitHub.
+Antes de começar, você precisa ter instalado:
 
-2. **Install Dependencies**
+- **Docker**
+- **Docker Compose**
 
-   Navigate to the project directory and install the dependencies using `npm install`.
+Verifique com:
 
-3. **Create the `.env` File**
+```bash
+docker --version
+docker compose version
+```
 
-   Create a `.env` file in the root of the project and add your environment variables. Example:
-    
-    DB_NAME=database_name
-    DB_USER=database_user
-    DB_PASSWORD=database_password
-    DB_HOST=database_host
-    PORT=3000
+## Como rodar o projeto (Docker)
+
+1. Clone o repositório
+
+```bash
+git clone https://github.com/flaviare1s/todo-app-backend.git
+cd todo-app-backend
+```
+
+2. Crie o arquivo .env
+
+Na raiz do projeto, crie um arquivo chamado .env com o seguinte conteúdo:
+
+DB_NAME=todo_db
+DB_USER=todo
+DB_PASSWORD=todo123
+DB_HOST=mysql
+DB_PORT=3306
+PORT=3000
 
 
-4. **Start the Server**
+⚠️ Importante
 
-Run `npm start` to start the server.
+DB_HOST=mysql é o nome do serviço no docker-compose
+
+Não use localhost para conexão entre containers
+
+3. Suba a aplicação com Docker Compose
+
+Execute o comando abaixo:
+
+```bash
+docker compose up --build
+```
+
+
+Esse comando irá:
+
+Criar a rede Docker
+
+Criar o volume do MySQL
+
+Subir o banco de dados
+
+Criar o banco automaticamente
+
+Subir a API apenas quando o banco estiver pronto
+
+4. Acesse a API
+
+A API ficará disponível em:
+
+http://localhost:3000
+
+
+Use Postman, Insomnia ou o navegador para testar as rotas.
