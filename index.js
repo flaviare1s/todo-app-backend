@@ -11,7 +11,7 @@ const app = express()
 
 app.use(
   cors({
-    origin: ["https://flaviare1s.github.io", "http://localhost:5173"],
+    origin: ["https://flaviare1s.github.io", "http://localhost:5173", "http://localhost:3001"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
